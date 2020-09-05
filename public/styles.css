@@ -200,6 +200,13 @@ nav {
   padding : 5px 15px 5px 15px;
 }
 
+#idea-card:hover {
+  background : var(--text-variant);
+  box-shadow : 5px 5px 10px var(--tertiary);
+}
+#idea-card i {
+  color : var(--highlight);
+}
 #ideas {
     background-color: var(--primary);
 }
@@ -220,6 +227,46 @@ nav {
 .btn-parent {
   display: flex;
   justify-content: space-between;
+}
+
+.comments {
+  background : var(--text);
+  margin-top : 20px;
+  padding : 10px 20px 10px 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color : var(--text-variant);
+}
+.comments li {
+  text-align: center; 
+}
+#cmnt {
+  text-align: left;
+  margin-top : 10px;
+  background : var(--text);
+  width : 90%;
+  padding-right : 10px;
+}
+#parent_cmnt {
+  background : whitesmoke;
+  margin : 5px;
+  width : 100%;
+}
+.child_cmnt {
+  display: flex;
+  justify-content: space-between;
+  
+}
+.cmnt-box {
+  margin-top : 20px;
+  border : 5px solid var(--nav-item);
+  width: fit-content;
+  text-align : left;
+  padding-top : 10px;
+  padding-left : 20px;
+  padding-right : 20px;
 }
 
 /* socials section */

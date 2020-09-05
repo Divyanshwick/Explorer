@@ -69,22 +69,26 @@
          
          
             <%var tags = idea.tech.split(",") %>
-            <div class="card mt-4 mb-4 ml-4 mr-4" style="width:85%;text-align:left;" data-aos="fade-left" data-aos-duration="800">
-                
-                
-                <div class="card-body">
-                  <p class="card-text"><%= idea.author.name %>, <%= idea.createdAt.toDateString() %></p>
-                  <h4 class="card-title"><%= idea.title %></h4>
-                  <p class="card-text"><%= idea.body.substring(0,200) %> ...</p>
-                  <p class="card-text">
-                      <% tags.forEach(function(tag){ %>
-                      <span class="badge badge-pill badge-primary"><%= tag %></span>
-                      <% }) %>
-                  </p>
-                  <a href="/home/ideas/<%= idea._id %>" class="btn btn-outline-primary">Read More</a>
+            <div class="card mt-4 mb-4 ml-4 mr-4" id="idea-card" style="width:85%;text-align:left;" data-aos="fade-up" data-aos-duration="800">
+                <div class="card-container" style="display: flex;">
+                    <div class="card-body" style="display: flex;">
+                        <span class="badge badge-pill badge-secondary p-2" style="display: flex;flex-direction: column;justify-content: space-between;"><i class="fas fa-angle-double-up"></i> <p><%= idea.likes.length %></p><i class="fas fa-angle-double-down"></i></span>
+                    </div>
+                    
+                    <div class="card-body">
+                    <p class="card-text"><%= idea.author.name %>, <%= idea.createdAt.toDateString() %></p>
+                    <h4 class="card-title"><%= idea.title %></h4>
+                    <p class="card-text"><%= idea.body.substring(0,200) %> ...</p>
+                    <p class="card-text">
+                        <% tags.forEach(function(tag){ %>
+                        <span class="badge badge-pill badge-primary"><%= tag %></span>
+                        <% }) %>
+                    </p>
+                    <a href="/home/ideas/<%= idea._id %>" class="btn btn-outline-primary">Read More</a>
 
+                    </div>
                 </div>
-             
+                
             </div>
         <% }) %> 
     </div>
