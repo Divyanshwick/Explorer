@@ -1,0 +1,126 @@
+<%- include("partials/header") %>
+<nav class="navbar navbar-expand-lg navbar-dark sticky-top">
+    <a class="navbar-brand" href="/home">
+        E.
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+                <a class="nav-link px-4" href="/home">Home</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link px-4" href="/home/resources">Resources</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link px-4" href="/home/clubs">Clubs & Societies</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link px-4" href="/home/wof">Wall of Fame</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link px-4" href="/home/ideas">Ideas</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link px-4" href="/home/contact">Contact Us</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+<section id="ideas-section">
+    <div class="container">
+    <div class="auth-container">
+        
+            <ul class="auth-list">
+                <h1 style="font-weight:800;font-size:4rem;">IDEAS</h1>
+                <% if(!currentUser) { %>
+                    
+                    <li class="nav-item ml-auto" id="auth-out">
+                        <a href="/login" class="nav-link"><button class="btn btn-lg btn-dark idea-submit-btn">Login</button></a>
+                    </li>
+                    <li class="nav-item" id="auth-out">
+                        <a href="/register" class="nav-link"><button class="btn btn-lg btn-dark idea-submit-btn">Sign Up</button></a>
+                    </li>
+                    <li class="nav-item" id="auth-out">
+                        <a href="/home/ideas/new" class="nav-link"><button class="btn btn-lg btn-dark idea-submit-btn">Submit</button></a>
+                    </li>
+                    <% } else { %>
+                        
+                        <li class="nav-item ml-auto" id="auth-in">
+                           <a href="#" class="nav-link disable" ><button class="btn btn-lg btn-dark idea-submit-btn"><%= currentUser.name %></button></a>
+                        </li>
+                        <li class="nav-item" id="auth-out">
+                            <a href="/home/ideas/new" class="nav-link"><button class="btn btn-lg btn-dark idea-submit-btn">Submit</button></a>
+                        </li>
+                    <li class="nav-item" id="auth-out">
+                        <a href="/logout" class="nav-link"><button class="btn btn-lg btn-dark idea-submit-btn">Logout</button></a>
+                    </li>
+                    <% } %>
+                </ul>
+                
+    </div>
+</div>
+    <div class="show" style="display: flex;flex-direction:column;justify-content: center;align-items: center;">
+  
+        <% ideas.forEach(function(idea){ %>
+         
+         
+            <%var tags = idea.tech.split(",") %>
+            <div class="card mt-4 mb-4 ml-4 mr-4" style="width:85%;text-align:left;" data-aos="fade-left" data-aos-duration="800">
+                
+                
+                <div class="card-body">
+                  <p class="card-text"><%= idea.author.name %>, <%= idea.createdAt.toDateString() %></p>
+                  <h4 class="card-title"><%= idea.title %></h4>
+                  <p class="card-text"><%= idea.body.substring(0,200) %> ...</p>
+                  <p class="card-text">
+                      <% tags.forEach(function(tag){ %>
+                      <span class="badge badge-pill badge-primary"><%= tag %></span>
+                      <% }) %>
+                  </p>
+                  <a href="/home/ideas/<%= idea._id %>" class="btn btn-outline-primary">Read More</a>
+
+                </div>
+             
+            </div>
+        <% }) %> 
+    </div>
+    
+
+
+
+<!-- <div class="btn-G"><a href="/home/submit" class="btn btn-outline-success" id="ideas-btn">Submit Your Idea</a></div> -->
+
+
+<section id="socials">
+    <div class="container-fluid">
+        <a target="_blank" href="https://github.com/KushalBhanot"><i
+                class="fab fa-github fa-3x white-icons"></i>&nbsp;&nbsp;&nbsp;&nbsp;</a>
+        <a target="_blank" href="https://www.linkedin.com/in/kushalbhanot/"><i
+                class="fab fa-linkedin-in fa-3x white-icons"></i>&nbsp;&nbsp;&nbsp;&nbsp;</a>
+        <a target="_blank" href="https://instagram.com/kushal.bhanot/"><i
+                class="fab fa-instagram fa-3x white-icons"></i></a>
+    </div>
+    </div>
+</section>
+
+<section id="credit">
+    <div class="container-fluid">
+        <p>Made with &hearts; by
+            <a target="_blank" href="https://www.github.com/KushalBhanot">Kushal Bhanot</a> and <a href="https://github.com/Divyanshwick">Divyansh Kumar</a></p>
+
+        <p>All rights reserved.</p>
+    </div>
+</section>
+</section>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/particles.js/2.0.0/particles.min.js'></script>
+<script src="/assets/js/particle.js"></script>
+<script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<script async src="https://unpkg.com/typer-dot-js@0.1.0/typer.js"></script>
+<script>AOS.init();</script>
+</body>
+
+</html>

@@ -1,0 +1,35 @@
+<%- include("partials/header") %>
+
+<section class="contact">
+    <div class="Box">
+        <div class="fBox">
+            <form action="/home/ideas/<%= idea._id %>/comments" method="POST">
+            
+                <legend><h2>ADD A COMMENT to <%= idea.title %> </h2></legend>
+                <div class="iBox">
+                    <input type="text" name="comment[text]" required="required">
+                    <span>Comment : </span>
+                </div>
+              
+              
+               
+                <div class="iBox">
+                    
+                    <input type="submit" value="ADD"><br>
+                   
+                    
+                </div>
+            
+            </form>
+        </div>
+      <div class="CmntImgBx">
+      </div>
+    
+</div>
+
+
+</section>
+
+
+
+<%- include("partials/footer") %>

@@ -1,0 +1,38 @@
+<%- include("partials/header") %>
+
+<section class="contact">
+    <div class="Box">
+        <div class="fBox">
+            <form action="/home/ideas/<%= idea._id %>?_method=PUT" method="POST">
+            
+                <h2>Edit Idea <br>"<%= idea.title %>" </h2>
+                <div class="iBox">
+                    <input type="text" name="blog[title]" value="<%= blog.title %>" required="required">
+                    <span>Title : </span>
+                </div>
+                <div class="iBox">
+                    <textarea name="blog[body]" required="required"><%= idea.body %></textarea>
+                    <span>Idea Desc : </span>
+                </div>
+                <div class="iBox">
+                    <textarea required="required" name="blog[tech]"><%= idea.tech %><</textarea>
+                    <span>Tech Used :</span>
+                </div>
+                <div class="iBox">
+                    <input type="submit" value="Update">
+                </div>
+            
+            </form>
+        </div>
+      <div class="UpdImgBx">
+      </div>
+    
+</div>
+
+
+</section>
+
+
+
+
+<%- include("partials/footer") %>
