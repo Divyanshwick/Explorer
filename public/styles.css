@@ -230,17 +230,18 @@ nav {
 }
 
 /* ideas */
-.ideas-container {
+.idea-container {
   margin-top: -120px;
   padding-top: 2%;
   text-align: center;
   padding-left: 12%;
   padding-right: 12%;
   padding-bottom: 0;
+  
 }
 
 @media only screen and (max-width: 728px) {
-  .ideas-container {
+  .idea-container {
     margin-top: -20px;
     padding-left: 8%;
     padding-right: 8%;
@@ -832,18 +833,9 @@ nav {
 #idea-card i {
   color : var(--highlight);
 }
-#ideas {
-    background-color: var(--primary);
-}
 
-#ideas h1 {
-    color: var(--text);
-    margin-bottom: 7%;
-}
 
-#ideas p {
-    color: var(--text);
-}
+
 
 .ideas-image {
     margin-top: 5%;
