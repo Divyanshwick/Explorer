@@ -630,7 +630,7 @@ nav {
 .fBox form .iBox textarea{
   position: relative;
   background: transparent;
-  width : 80%;
+  width : 100%;
   color : var(--text);
   border: none;
   outline: none;
@@ -646,17 +646,17 @@ nav {
 }
 .fBox form .iBox input[type="submit"] {
   background : var(--text);
-  padding : 8px 20px;
+  padding : 5px;
   margin-top: -10px;
   width : 120px;
   cursor: pointer;
   border: 1px solid var(--text-variant);
-  border-radius: 4px;
+  border-radius: 12px;
   color : var(--highlight);
   font-size : 20px;
   font-weight: 500;
   text-transform: uppercase;
-  letter-spacing: 4px;
+  letter-spacing: 2px;
   transition: 0.3s ease-in;
 }
 .fBox form .iBox input[type="submit"]:hover {
@@ -735,6 +735,14 @@ nav {
   margin-bottom: 120px;
   height : 100%;
  }
+ .ContactImgBx {
+  flex : 0.5;
+  background-image: url('/assets/images/undraw_Group_chat_unwm.svg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  margin-bottom: 120px;
+  height : 100%;
+ }
 /*  under development */
 #under-dev {
     text-align: center;
@@ -808,10 +816,11 @@ nav {
 #ideas-section {
   text-align: center;
   
-  height: 90vh;
+  height: auto;
   background-image: url('/assets/images/Idea_bg.png');
   background-repeat: no-repeat;
   background-size: cover;
+  
 }
 
 .idea-submit-btn, .idea-submit-btn:visited {
@@ -928,9 +937,64 @@ nav {
   padding-left : 20px;
   padding-right : 20px;
 }
-
-@media only screen and (max-width : 770px) {
+@media only screen and (max-width : 992px) {
+ 
+  .iBox {
+      width : 100%;    
+  }
   
+}
+
+@media only screen and (max-width : 576px) {
+  .imgBx {
+    display: none;
+  }
+  .LoginImgBx {
+    display: none;
+  }
+  .UpdImgBx {
+    display: none;
+  }
+  .SignUpImgBx {
+    display: none;
+  }
+  .ContactImgBx {
+    display: none;
+  }
+  .Box {
+    justify-content: center;
+    align-items: center;
+  }
+  .fBox {
+    flex : 0.9;
+  }
+  .fBox form{
+    width : 100%;
+    padding : 0;
+  }
+  .fBox form .iBox:last-child {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .fBox form .iBox input[type="submit"] {
+    margin-left : auto;
+    margin-right : auto;
+  }
+  form h2 {
+    text-align : center;
+    font-weight : 500;
+    font-size : 2rem !important;
+  }
+
+  .comments {
+    padding-left : 0;
+    padding-right : 0;
+  }
+  #cmnt {
+    padding : 0;
+  } 
 }
 
 
