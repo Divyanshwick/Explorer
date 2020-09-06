@@ -693,14 +693,48 @@ nav {
   border-bottom-color: var(--primary-variant);
 }
 .imgBx {
- flex : 0.5;
-  background-image: url('/assets/images/undraw_Group_chat_unwm.svg');
+  flex : 0.5;
+   background-image: url('/assets/images/undraw_developer_activity_bv83.svg');
+   background-repeat: no-repeat;
+   background-size: cover;
+   margin-bottom: 120px;
+   height : 100%;
+ }
+.UpdImgBx {
+  flex : 0.5;
+   background-image: url('/assets/images/undraw_update_uxn2.svg');
+   background-repeat: no-repeat;
+   background-size : cover;
+   
+   height : 70%;
+   width : 60%;
+ }
+  
+ .LoginImgBx {
+  flex : 0.5;
+  background-image: url('/assets/images/undraw_Login.svg') !important;
+  background-repeat: no-repeat;
+  background-size: cover;
+  
+  height : 85%;
+}
+.SignUpImgBx {
+  flex : 0.5;
+  background-image: url('/assets/images/undraw_SignUp.svg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  margin-bottom: 100px;
+  
+  height : 50%;
+ }
+ .CmntImgBx {
+  flex : 0.5;
+  background-image: url('/assets/images/undraw_Comments.svg');
   background-repeat: no-repeat;
   background-size: cover;
   margin-bottom: 120px;
   height : 100%;
-}
-
+ }
 /*  under development */
 #under-dev {
     text-align: center;
