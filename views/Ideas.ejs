@@ -50,11 +50,11 @@
             </div>
         <% } %>
     </div>
-   <div style="padding-left: 10%;padding-right:10%;">
+   <div class="idea-parent-container">
     <div class="auth-container" >
         
             <ul class="auth-list">
-                <h1 style="font-weight:800;font-size:4rem;">IDEAS</h1>
+                <h1>IDEAS</h1>
                 <% if(!currentUser) { %>
                     
                     <li class="nav-item ml-auto" id="auth-out">
@@ -87,7 +87,7 @@
          
          
             <%var tags = idea.tech.split(",") %>
-            <div class="card mt-4 mb-4 ml-4 mr-4" id="idea-card" style="width:85%;text-align:left;" data-aos="fade-up" data-aos-duration="800">
+            <div class="card mt-4 mb-4 ml-4 mr-4" id="idea-card" style="text-align:left;" data-aos="fade-up" data-aos-duration="800">
                 <div class="card-container" style="display: flex;">
                     <div class="card-body" style="display: flex;">
                         <span class="badge badge-pill badge-secondary p-2" style="display: flex;flex-direction: column;justify-content: space-between;"><i class="fas fa-angle-double-up"></i> <p><%= idea.likes.length %></p><i class="fas fa-angle-double-down"></i></span>
