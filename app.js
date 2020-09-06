@@ -14,7 +14,7 @@ var Comment = require("./models/comments");
 var Contact = require("./models/contacts");
 var User = require("./models/users");
 
-mongoose.connect("mongodb://localhost:27017/explorer",{
+mongoose.connect("mongodb+srv://admin-Divyansh:Test123@cluster2.bln5e.mongodb.net/explorer",{
     useNewUrlParser : true,
     useUnifiedTopology : true
   
@@ -77,6 +77,10 @@ app.get("/home/clubs",(req,res) => {
     res.render("clubs.ejs");
 });
 
+//Boooks
+app.get("/home/books",(req,res) => {
+    res.render("Books.ejs");
+})
 //-------
 //Ideas
 //-------
