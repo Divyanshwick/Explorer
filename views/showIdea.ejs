@@ -70,7 +70,7 @@
                                     <button type="button" class="btn btn-sm btn-light" data-toggle="modal"
                                     data-target="#blogLikes"><%= idea.likes.length %>
                                     </button>
-                                    <button class="btn btn-sm" style="color : white;display: flex;flex-direction: column;">
+                                    <button class="btn btn-sm" style="color : white;display: flex;flex-direction: column;" disabled>
                                         <i class="fas fa-angle-double-down"></i> 
                                     </button>
                                 </div>
@@ -83,7 +83,7 @@
                                         data-target="#blogLikes"><%= idea.likes.length %>
                                 </button>
                                
-                                <button class="btn btn-sm " style="color : white;display: flex;flex-direction: column;">
+                                <button class="btn btn-sm " style="color : white;display: flex;flex-direction: column;" disabled>
                                     <i class="fas fa-angle-double-down"></i> 
                                 </button>
                                 </div>
@@ -160,7 +160,7 @@
         <!-- Modal content-->
         <div class="modal-content">
             <div class="modal-header">
-                <h4 class="modal-title"> Likes: <%= idea.likes.length %></h4>
+                <h4 class="modal-title"> Upvotes: <%= idea.likes.length %></h4>
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
                 
             </div>
@@ -168,7 +168,7 @@
                 <table class="table table-striped">
                     <thead>
                     <tr>
-                        <th>Liked by:</th>
+                        <th>Upvoted by:</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -179,7 +179,7 @@
                     <% }); %>
                     <% if (idea.likes.length === 0) { %>
                         <tr>
-                            <td><em>No likes yet.</em></td>
+                            <td><em>No Upvotes yet.</em></td>
                         </tr>
                     <% } %>
                     </tbody>
