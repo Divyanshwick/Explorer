@@ -52,7 +52,7 @@
         <div class="card w-100" id="idea-card">
             <div class="card-header" style="text-align:center;"><%= idea.author.name %>, <%= idea.createdAt.toDateString() %></div>
             <div class="card-body" style="display: flex;justify-content: space-between;">
-            <div class="container" style="display: flex;justify-content: space-between;">
+            <div class="card-body-container" style="display: flex;justify-content: space-between;">
                 <div class="like-group">
                     <div style="padding-bottom: 10px;">
                         <form action="/home/ideas/<%= idea._id %>/likes" method="POST">

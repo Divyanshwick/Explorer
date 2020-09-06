@@ -837,7 +837,14 @@ nav {
   padding: 1.2% 4.5%;
   outline: none;
 }
-
+.card-body {
+  padding-left : 0.75rem !important;
+  padding-right : 0.2rem !important;
+}
+.card-body-container {
+  padding-left : 1.25rem;
+  padding-right : 1.25rem;
+}
 
 .transparent {
   background : transparent !important; 
@@ -955,6 +962,10 @@ nav {
 }
 
 @media only screen and (max-width : 576px) {
+  .card-body-container {
+    padding-left : 0 !important;
+    padding-right : 0 !important;
+  }
   .auth-list h1 {
     font-weight : 600;
     font-size : 3rem;
