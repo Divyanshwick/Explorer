@@ -34,7 +34,22 @@
         </ul>
     </div>
 </nav>
+
 <section id="ideas-section">
+    <div class="container">
+        <% if(error && error.length > 0) { %>
+            <div class="alert alert-danger alert-dismissible">
+                <button type="button" class="close" data-dismiss="alert">&times;</button>
+                <h5><%= error %></h5>
+            </div>
+        <% } %>
+        <% if(success && success.length > 0) { %>
+            <div class="alert alert-success alert-dismissible">
+                <button type="button" class="close" data-dismiss="alert">&times;</button>
+                <h5><%= success %></h5>
+            </div>
+        <% } %>
+    </div>
    <div style="padding-left: 10%;padding-right:10%;">
     <div class="auth-container" >
         
@@ -45,12 +60,7 @@
                     <li class="nav-item ml-auto" id="auth-out">
                         <a href="/login" class="nav-link"><button class="btn btn-lg btn-dark idea-submit-btn">Login/Submit</button></a>
                     </li>
-                    <!-- <li class="nav-item" id="auth-out">
-                        <a href="/register" class="nav-link"><button class="btn btn-lg btn-dark idea-submit-btn">Sign Up</button></a>
-                    </li> -->
-                    <!-- <li class="nav-item" id="auth-out">
-                        <a href="/home/ideas/new" class="nav-link"><button class="btn btn-lg btn-dark idea-submit-btn">Submit</button></a>
-                    </li> -->
+                   
                     <% } else { %>
                         
                         <li class="nav-item ml-auto" id="auth-in" style="display: flex;flex-direction: column;">
@@ -104,7 +114,6 @@
 
 
 
-<!-- <div class="btn-G"><a href="/home/submit" class="btn btn-outline-success" id="ideas-btn">Submit Your Idea</a></div> -->
 
 
 <section id="credit">
