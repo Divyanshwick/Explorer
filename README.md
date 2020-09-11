@@ -1,6 +1,7 @@
 # Explorer
 
 - [x] Home Page :: Kushal
+- [x] Ideas :: Divyansh
 - [x] Resources :: Kushal
 - [x] Clubs & Societies :: Kushal (UI and Map) :: Divyansh (Functionality)
 - [x] Wall of Fame :: Divyansh
