@@ -14,7 +14,7 @@ var Comment = require("./models/comments");
 var Contact = require("./models/contacts");
 var User = require("./models/users");
 
-mongoose.connect("mongodb+srv://admin-Divyansh:Test123@cluster2.bln5e.mongodb.net/explorer",{
+mongoose.connect("",{
     useNewUrlParser : true,
     useUnifiedTopology : true
   
