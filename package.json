@@ -12,6 +12,7 @@
     "node": "12.17.0"
   },
   "dependencies": {
+    "bl": "^4.0.3",
     "body-parser": "^1.19.0",
     "connect-flash": "^0.1.1",
     "dotenv": "^8.2.0",
