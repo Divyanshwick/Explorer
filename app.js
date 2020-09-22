@@ -14,7 +14,7 @@ var Comment = require("./models/comments");
 var Contact = require("./models/contacts");
 var User = require("./models/users");
 
-mongoose.connect("",{
+mongoose.connect("mongodb+srv://admin-Divyansh:Test123@cluster2.bln5e.mongodb.net/explorer",{
     useNewUrlParser : true,
     useUnifiedTopology : true
   
@@ -203,6 +203,36 @@ app.post("/home/ideas/:id/likes",isLoggedIn,(req,res) => {
     });
 });
 
+//======
+//Dislikes
+//======
+//Blog dislike route
+app.post("/home/ideas/:id/dislikes",isLoggedIn,(req,res) => {
+    Idea.findById(req.params.id,(err,foundIdea)=> {
+        if(err) {
+            req.flash("error","Idea not found!!!");
+            req.redirect("/home/ideas");
+        } 
+            var foundUserDislike = foundIdea.dislikes.some((dislike) => {
+                return dislike.equals(req.user._id);
+            });
+
+            if(foundUserDislike) {
+                foundIdea.dislikes.pull(req.user._id);
+            } else {
+                foundIdea.dislikes.push(req.user);
+            }
+
+            foundIdea.save((err) => {
+                if(err) {
+                    req.flash("error","An error occurred!!");
+                    return res.redirect("/home/ideas");
+                }
+                return res.redirect("/home/ideas/"+ foundIdea._id);
+            });
+         
+    });
+});
 //==========
 //Comments
 //==========

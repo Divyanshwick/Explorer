@@ -67,23 +67,52 @@
                                     <button class="btn btn-sm" style="color : white;display: flex;flex-direction: column;">
                                         <i class="fas fa-angle-double-up"></i> 
                                     </button>
-                                    <button type="button" class="btn btn-sm btn-light" data-toggle="modal"
+                                    <button type="button" class="btn btn-sm btn-outline-success" style="font-weight: 900;" data-toggle="modal"
                                     data-target="#blogLikes"><%= idea.likes.length %>
                                     </button>
-                                    <button class="btn btn-sm" style="color : white;display: flex;flex-direction: column;" disabled>
-                                        <i class="fas fa-angle-double-down"></i> 
-                                    </button>
+                                  
                                 </div>
                                 <% } else { %>
                                 <div style="display:flex;flex-direction:column;justify-content: space-between;">
                                 <button class="btn btn-sm" style="color : white;display: flex;flex-direction: column;">
                                     <i class="fas fa-angle-double-up"></i> 
                                 </button>
-                                <button type="button" class="btn btn-sm btn-light" data-toggle="modal"
+                                <button type="button" class="btn btn-sm btn-outline-success" style="font-weight: 900;" data-toggle="modal"
                                         data-target="#blogLikes"><%= idea.likes.length %>
                                 </button>
                                
-                                <button class="btn btn-sm " style="color : white;display: flex;flex-direction: column;" disabled>
+                              
+                                </div>
+                                <% } %>
+                                
+                            </div>
+                        </div>
+                        </form>
+                        <form action="/home/ideas/<%= idea._id %>/dislikes" method="POST" style="padding-top: 5px;">
+                            <div class="btn-parent">
+                                
+                            <div class="btn-group" style="display: flex;flex-direction: column;justify-content: space-between;">
+                                
+                                <% if (currentUser && idea.dislikes.some((dislike) => { %>
+                                   <% return dislike.equals(currentUser._id); %>
+                                <% })) { %>
+                                <div style="display:flex;flex-direction:column;justify-content: space-between;">
+                                  
+                                    <button type="button" class="btn btn-sm btn-outline-danger" style="font-weight: 900;" data-toggle="modal"
+                                    data-target="#blogDislikes"><%= idea.dislikes.length %>
+                                    </button>
+                                    <button class="btn btn-sm" style="color : white;display: flex;flex-direction: column;">
+                                        <i class="fas fa-angle-double-down"></i> 
+                                    </button>
+                                </div>
+                                <% } else { %>
+                                <div style="display:flex;flex-direction:column;justify-content: space-between;">
+                              
+                                <button type="button" class="btn btn-sm btn-outline-danger" style="font-weight: 900;" data-toggle="modal"
+                                        data-target="#blogDislikes"><%= idea.dislikes.length %>
+                                </button>
+                               
+                                <button class="btn btn-sm " style="color : white;display: flex;flex-direction: column;">
                                     <i class="fas fa-angle-double-down"></i> 
                                 </button>
                                 </div>
@@ -180,6 +209,44 @@
                     <% if (idea.likes.length === 0) { %>
                         <tr>
                             <td><em>No Upvotes yet.</em></td>
+                        </tr>
+                    <% } %>
+                    </tbody>
+                </table>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Campground Dislikes Modal -->
+<div id="blogDislikes" class="modal fade" role="dialog">
+    <div class="modal-dialog modal-dialog-scrollable">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title"> Downvotes: <%= idea.dislikes.length %></h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                
+            </div>
+            <div class="modal-body">
+                <table class="table table-striped">
+                    <thead>
+                    <tr>
+                        <th>Downvoted by:</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <% idea.dislikes.forEach(function(dislike) { %>
+                        <tr>
+                            <td><span class="badge"><i class="fas fa-user"></i></span> <%= dislike.name %></td>
+                        </tr>
+                    <% }); %>
+                    <% if (idea.dislikes.length === 0) { %>
+                        <tr>
+                            <td><em>No Downvotes yet :)</em></td>
                         </tr>
                     <% } %>
                     </tbody>
