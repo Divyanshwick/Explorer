@@ -81,6 +81,13 @@
                 
     </div>
 
+    <form action="/home/ideas" method="GET" class="form-inline">
+        <div class="form-group">
+            <input type="text" name="search" placeholder="search the ideas..." class="form-control">
+            <input type="submit" class="btn btn-default"><i class="fa fa-search"></i></input>
+        </div>
+    </form>
+
     <div class="show" style="display: flex;flex-direction:column;justify-content: center;align-items: center;">
   
         <% ideas.forEach(function(idea){ %>

@@ -1,6 +1,8 @@
 var PORT = process.env.PORT || 3000;
 var methodOverride = require("method-override");
 var express = require("express");
+var multer = require("multer");
+var upload = multer({ dest : 'uploads/'});
 var app = express();
 var bodyParser  =   require("body-parser");
 var flash = require("connect-flash");
@@ -86,14 +88,29 @@ app.get("/home/books",(req,res) => {
 //-------
 //Ideas(View all Ideas)
 app.get("/home/ideas",function(req,res){
-    Idea.find({},function(err,ideas){
-        if(err){
-            console.log(err);
-        }
-        else{
-            res.render("Ideas.ejs",{ideas : ideas, currentUser : req.user});
-        }
-    });
+    console.log(req.query.search);
+    if(req.query.search) {
+        const regex = new RegExp(escapeRegex(req.query.search),'gi');
+        console.log(regex);
+        Idea.find({title : regex},function(err,ideas){
+            if(err){
+                console.log(err);
+            }
+            else{
+                res.render("Ideas.ejs",{ideas : ideas, currentUser : req.user});
+            }
+        });
+    } else {
+    
+        Idea.find({},function(err,ideas){
+            if(err){
+                console.log(err);
+            }
+            else{
+                res.render("Ideas.ejs",{ideas : ideas, currentUser : req.user});
+            }
+        });
+    }
 });
 
 //Create Idea
@@ -428,6 +445,9 @@ function checkCommentOwnership(req,res,next) {
     }
 }
 
+function escapeRegex(text) {
+    return text.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, "\\$&");
+};
 
 
 app.listen(PORT,() => {

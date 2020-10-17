@@ -286,6 +286,20 @@ nav {
     margin-top: 5%;
 }
 
+.form-inline { 
+  display: flex;
+  justify-content: center;
+  flex : 1 !important;
+}
+
+.form-control {
+  flex : 1 !important;
+  border-radius : 16px;
+  text-align : center;
+  padding : 30px !important;
+  width : 500px !important;
+}
+
 /* socials section */
 #socials {
     background-color: var(--tertiary);

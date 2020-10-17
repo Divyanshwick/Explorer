@@ -205,6 +205,7 @@
                         <tr>
                             <td><span class="badge"><i class="fas fa-user"></i></span> <%= like.name %></td>
                         </tr>
+                       <% console.log(like.name) %>
                     <% }); %>
                     <% if (idea.likes.length === 0) { %>
                         <tr>
@@ -243,6 +244,7 @@
                         <tr>
                             <td><span class="badge"><i class="fas fa-user"></i></span> <%= dislike.name %></td>
                         </tr>
+                        
                     <% }); %>
                     <% if (idea.dislikes.length === 0) { %>
                         <tr>
