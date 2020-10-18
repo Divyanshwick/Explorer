@@ -352,6 +352,13 @@ input[type="submit"] {
   }
 
 }
+
+@media only screen and (max-width : 510px) {
+  .noMatchImg {
+    width : 300px !important;
+    height : 190px;
+  }
+}
 /* socials section */
 #socials {
     background-color: var(--tertiary);
