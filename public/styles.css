@@ -288,9 +288,13 @@ nav {
 
 .form-inline { 
   display: flex;
-  flex-wrap : nowrap;
+  flex-wrap : nowrap !important;
   justify-content: center;
-  flex : 1 !important;
+  
+}
+.form-group {
+  display: flex !important;
+  flex-wrap : nowrap !important;
 }
 
 .form-control {
@@ -333,6 +337,20 @@ input[type="submit"] {
 .noMatchImg {
   max-width : 600px;
   height : 350px;
+}
+
+@media only screen and (max-width : 576px) {
+
+  .form-control {
+    width : 100% !important;
+    padding : 20px !important;
+  }
+  input[type="submit"] {
+    height : 50px;
+    width : 50px;
+    font-size : 1em;
+  }
+
 }
 /* socials section */
 #socials {
