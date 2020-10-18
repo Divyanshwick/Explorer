@@ -88,7 +88,7 @@ app.get("/home/books",(req,res) => {
 //-------
 //Ideas(View all Ideas)
 app.get("/home/ideas",function(req,res){
-    console.log(req.query.search);
+    var noMatch = null;
     if(req.query.search) {
         const regex = new RegExp(escapeRegex(req.query.search),'gi');
         console.log(regex);
@@ -97,7 +97,11 @@ app.get("/home/ideas",function(req,res){
                 console.log(err);
             }
             else{
-                res.render("Ideas.ejs",{ideas : ideas, currentUser : req.user});
+                if(ideas.length < 1) {
+                    noMatch = "Requested Project doesn't exist";
+                }
+                console.log(noMatch);
+                res.render("Ideas.ejs",{ideas : ideas, currentUser : req.user, noMatch : noMatch});
             }
         });
     } else {
@@ -107,7 +111,7 @@ app.get("/home/ideas",function(req,res){
                 console.log(err);
             }
             else{
-                res.render("Ideas.ejs",{ideas : ideas, currentUser : req.user});
+                res.render("Ideas.ejs",{ideas : ideas, currentUser : req.user, noMatch : noMatch});
             }
         });
     }
@@ -147,8 +151,7 @@ app.get("/home/ideas/:id",function(req,res){
             req.redirect("/home/ideas");
         }
         else{
-            
-            res.render("showIdea.ejs",{idea : showIdea});
+           res.render("showIdea.ejs",{idea : showIdea});
         }
     });
 });

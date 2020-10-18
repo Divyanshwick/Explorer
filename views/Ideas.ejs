@@ -83,13 +83,17 @@
 
     <form action="/home/ideas" method="GET" class="form-inline">
         <div class="form-group">
-            <input type="text" name="search" placeholder="search the ideas..." class="form-control">
-            <input type="submit" class="btn btn-default"><i class="fa fa-search"></i></input>
+            <input type="text" name="search" placeholder="Search Ideas..." class="form-control">
+            <input type="submit" value="&#xf002;" class="search">
         </div>
     </form>
 
     <div class="show" style="display: flex;flex-direction:column;justify-content: center;align-items: center;">
-  
+        <div class="col-md-6" id="noMatch">
+            <% if(noMatch !== null) { %>
+               <img src="/assets/images/noMatch.png" class="noMatchImg" alt=" <%= noMatch %>" >
+            <% } %>
+        </div>
         <% ideas.forEach(function(idea){ %>
          
          
