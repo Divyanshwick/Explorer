@@ -53,6 +53,7 @@ body {
 }
 
 /* scroll bar */
+
 ::-webkit-scrollbar {
   width: 5px;
 }
@@ -64,7 +65,6 @@ body {
 ::-webkit-scrollbar-thumb {
   background: #444;
   border-radius: 50px;
-
 }
 
 ::-webkit-scrollbar-thumb:hover {
@@ -72,45 +72,51 @@ body {
 }
 
 /* Navigation Bar */
+
 nav {
-   background: rgba(0, 0, 0, 0.05);
-   color: var(--text-variant);
-   z-index: 1;
+  background: var(--text-variant);
+  color: var(--text-variant);
+  z-index: 1;
 }
 
 .navbar {
-    /* padding: 0 0 4.5rem;  */
-    padding-left: 10%;
-    padding-right: 10%;
-  }
+  /* padding: 0 0 4.5rem;  */
+  padding-left: 10%;
+  padding-right: 10%;
+}
 
 .navbar-brand {
-    font-size: 2rem;
-    font-weight: bolder;
-    color: var(--text-variant);
+  font-size: 2rem;
+  font-weight: bolder;
+  color: var(--text);
+}
+
+.nav-item {
+  border-bottom: 2px solid var(--text-variant);
+  transition: color .2s ease-out, border-bottom-color .2s ease-out;
 }
 
 .nav-item:hover {
-    border-bottom: 2px solid var(--highlight);
+  border-bottom: 2px solid var(--highlight);
 }
 
 .nav-link {
-    font-size: 1.5 rem;
-    font-weight: normal;
-    color: var(--text-variant);
+  font-size: 1.5 rem;
+  font-weight: normal;
+  color: var(--text);
 }
 
 .navbar-toggler i {
-    color: var(--text-variant);
+  color: var(--text);
 }
 
 .navbar-brand:hover, .nav-link:hover, .navbar-toggler i:hover {
-    color: unset;
+  color: var(--text);
 }
 
 /* hero section */
 #hero-section {
-    background-image: url('/assets/images/hero\ background\ \(1\).png');
+    background-image: url('/assets/images/Hero-Color-Design.png');
     background-repeat: no-repeat;
     background-size: cover;
     height: 100vh;
@@ -156,23 +162,25 @@ nav {
   background-color: transparent;
 } */
 
-.call-to-action, .call-to-action:visited {
-    background-color: transparent;
-    color: var(--tertiary);
-    border: 2px solid var(--tertiary);
-    padding: 1% 4%;
-    margin-bottom: 6%;
-    border-radius: 0.4em;
+.cta {
+  color: #fafaff;
+  background-color: #234183;
+  border-radius: 30px;
+  padding: 10px 45px;
+  cursor: pointer;
+  transition: 0.5s;
 }
 
-.call-to-action:focus, .call-to-action:hover {
-  background-color: var(--tertiary);
-  padding: 1.2% 4.5%;
-  outline: none;
+.cta:hover {
+  color: var(--text);
+  background-color: #15254b;
+  box-shadow: 4px 4px 6px rgba(0, 0, 0, 0.3);
 }
 
-.call-to-action:hover {
-  box-shadow: 8px 8px 10px rgba(0, 0, 0, 0.2);
+.cta:active {
+  transition: 0.2s;
+  box-shadow: 6px 6px 8px rgba(0, 0, 0, 0.5);
+  transform: translateY(4px)
 }
 
 /* For Mobile Screens */
