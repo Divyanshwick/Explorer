@@ -14,6 +14,7 @@ var LocalStrategy = require("passport-local");
 var LocalMongooseStrategy = require("passport-local-mongoose");
 var GoogleStrategy = require('passport-google-oauth20').Strategy;
 var GitHubStrategy = require("passport-github2").Strategy;
+var FacebookStrategy = require("passport-facebook").Strategy;
 var Idea = require("./models/ideas");
 var Comment = require("./models/comments");
 var Contact = require("./models/contacts");
@@ -70,13 +71,25 @@ passport.use(new GoogleStrategy({
 ));
 
 passport.use(new GitHubStrategy({
-    clientID: GITHUB_CLIENT_ID,
-    clientSecret: GITHUB_CLIENT_SECRET,
+    clientID: process.env.GITHUB_CLIENT_ID,
+    clientSecret: process.env.GITHUB_CLIENT_SECRET,
     callbackURL: "http://localhost:3000/auth/github/home/ideas"
   },
   function(accessToken, refreshToken, profile, done) {
     User.findOrCreate({ githubId: profile.id }, function (err, user) {
       return done(err, user);
+    });
+  }
+));
+
+passport.use(new FacebookStrategy({
+    clientID: FACEBOOK_APP_ID,
+    clientSecret: FACEBOOK_APP_SECRET,
+    callbackURL: "http://localhost:3000/auth/facebook/callback"
+  },
+  function(accessToken, refreshToken, profile, cb) {
+    User.findOrCreate({ facebookId: profile.id }, function (err, user) {
+      return cb(err, user);
     });
   }
 ));
@@ -130,6 +143,16 @@ app.get('/auth/google',
     // Successful authentication, redirect home.
     res.redirect('/home/ideas');
   });
+//Github Auth
+app.get('/auth/github',
+  passport.authenticate('github', { scope: [ 'user:email' ] }));
+  
+app.get('/auth/github/home/ideas', 
+passport.authenticate('github', { failureRedirect: '/login' }),
+function(req, res) {
+// Successful authentication, redirect home.
+res.redirect('/home/ideas');
+});
 //-------
 //Ideas
 //-------
