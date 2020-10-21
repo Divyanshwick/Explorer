@@ -238,6 +238,9 @@ nav {
 }
 
 /* ideas */
+.login-btn {
+  text-decoration: none !important;
+}
 .idea-container {
   margin-top: -120px;
   padding-top: 2%;
@@ -723,12 +726,12 @@ input[type="submit"] {
   height : 600px;
   background : var(--tertiary);
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   align-items: center;
 }
 
 .fBox { 
-  flex : 0.5;
+  flex : 0.9;
   /* width : 50%; */
   display: flex;
   justify-content: center;
@@ -1011,6 +1014,34 @@ input[type="submit"] {
 }
 #auth-out button {
   padding : 5px 15px 5px 15px;
+}
+
+.gAuth {
+  background : var(--text) !important;
+  color : var(--text-variant) !important; 
+  border-radius : 23px;
+  height: 500px;
+  max-width : 300px !important;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items : center;
+}
+
+.gAuth > .btn {
+  display: flex;
+  justify-content: space-evenly;
+  width : 250px;
+  padding : 12px 0 0 0 ;
+  font-weight: 700;
+  font-size: 1.2em;
+  border-radius : 23px;
+  background : #DB4437;
+  color : var(--text);
+}
+.gAuth > .btn > i {
+  font-size : 1.5em;
+  color : var(--text);
 }
 #idea-card {
   width : 100%;

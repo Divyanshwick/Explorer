@@ -1,3 +1,4 @@
+require('dotenv').config();
 var PORT = process.env.PORT || 3000;
 var methodOverride = require("method-override");
 var express = require("express");
@@ -11,10 +12,13 @@ var mongoose = require("mongoose");
 var passport = require("passport");
 var LocalStrategy = require("passport-local");
 var LocalMongooseStrategy = require("passport-local-mongoose");
+var GoogleStrategy = require('passport-google-oauth20').Strategy;
+var GitHubStrategy = require("passport-github2").Strategy;
 var Idea = require("./models/ideas");
 var Comment = require("./models/comments");
 var Contact = require("./models/contacts");
 var User = require("./models/users");
+
 
 mongoose.connect("mongodb+srv://admin-Divyansh:Test123@cluster2.bln5e.mongodb.net/explorer",{
     useNewUrlParser : true,
@@ -40,8 +44,43 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 passport.use(new LocalStrategy(User.authenticate()));
-passport.serializeUser(User.serializeUser());
-passport.deserializeUser(User.deserializeUser());
+passport.use(User.createStrategy());
+passport.serializeUser(function(user, done) {
+    done(null, user.id);
+  });
+  
+  passport.deserializeUser(function(id, done) {
+    User.findById(id, function(err, user) {
+      done(err, user);
+    });
+  });
+
+passport.use(new GoogleStrategy({
+    clientID: process.env.CLIENT_ID,
+    clientSecret: process.env.CLIENT_SECRET,
+    callbackURL: "http://localhost:3000/auth/google/home/ideas",
+    userProfileURL: "https://www.googleapis.com/oauth2/v3/userinfo"
+  },
+  function(accessToken, refreshToken, profile, cb) {
+      console.log(profile);
+    User.findOrCreate({ googleId: profile.id }, function (err, user) {
+      return cb(err, user);
+    });
+  }
+));
+
+passport.use(new GitHubStrategy({
+    clientID: GITHUB_CLIENT_ID,
+    clientSecret: GITHUB_CLIENT_SECRET,
+    callbackURL: "http://localhost:3000/auth/github/home/ideas"
+  },
+  function(accessToken, refreshToken, profile, done) {
+    User.findOrCreate({ githubId: profile.id }, function (err, user) {
+      return done(err, user);
+    });
+  }
+));
+
 
 app.use(function(req,res,next){
     res.locals.currentUser = req.user;
@@ -62,8 +101,6 @@ app.get("/",(req,res)=> {
 app.get("/home",(req,res) => {
     res.render("index.ejs");
 });
-
-
 //Resources
 app.get("/home/resources",(req,res) => {
     res.render("resources.ejs");
@@ -83,6 +120,16 @@ app.get("/home/clubs",(req,res) => {
 app.get("/home/books",(req,res) => {
     res.render("Books.ejs");
 })
+//Google SignIn
+app.get('/auth/google',
+  passport.authenticate('google', { scope: ['profile'] }));
+
+  app.get('/auth/google/home/ideas', 
+  passport.authenticate('google', { failureRedirect: '/login' }),
+  function(req, res) {
+    // Successful authentication, redirect home.
+    res.redirect('/home/ideas');
+  });
 //-------
 //Ideas
 //-------
