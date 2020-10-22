@@ -1021,7 +1021,7 @@ input[type="submit"] {
   color : var(--text-variant) !important; 
   border-radius : 23px;
   height: 500px;
-  max-width : 300px !important;
+  width : 300px;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
@@ -1192,6 +1192,26 @@ input[type="submit"] {
   }
 }
 
+@media only screen and (max-width : 900px) {
+  .Box {
+    flex-direction : column;
+    justify-content: space-evenly;
+    height : 730px;
+  }
+  .fBox {
+    width : 90%;
+    flex : 0.5;
+  }
+  .fBox form {
+    padding : 0 0 0 0;
+  }
+  .gAuth {
+    flex-direction : row;
+    flex-wrap : wrap;
+    width: 90%!important;
+    height : 200px;
+  }
+}
 
 
 

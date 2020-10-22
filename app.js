@@ -59,7 +59,7 @@ passport.serializeUser(function(user, done) {
 passport.use(new GoogleStrategy({
     clientID: process.env.CLIENT_ID,
     clientSecret: process.env.CLIENT_SECRET,
-    callbackURL: "http://localhost:3000/auth/google/home/ideas",
+    callbackURL: "https://explorer-kd.herokuapp.com/auth/google/home/ideas",
     userProfileURL: "https://www.googleapis.com/oauth2/v3/userinfo"
   },
   function(accessToken, refreshToken, profile, cb) {
@@ -73,7 +73,7 @@ passport.use(new GoogleStrategy({
 passport.use(new GitHubStrategy({
     clientID: process.env.GITHUB_CLIENT_ID,
     clientSecret: process.env.GITHUB_CLIENT_SECRET,
-    callbackURL: "http://localhost:3000/auth/github/home/ideas"
+    callbackURL: "https://explorer-kd.herokuapp.com/auth/github/home/ideas"
   },
   function(accessToken, refreshToken, profile, done) {
     User.findOrCreate({ githubId: profile.id }, function (err, user) {
@@ -83,11 +83,12 @@ passport.use(new GitHubStrategy({
 ));
 
 passport.use(new FacebookStrategy({
-    clientID: FACEBOOK_APP_ID,
-    clientSecret: FACEBOOK_APP_SECRET,
-    callbackURL: "http://localhost:3000/auth/facebook/callback"
+    clientID: process.env.FACEBOOK_APP_ID,
+    clientSecret: process.env.FACEBOOK_APP_SECRET,
+    callbackURL: "http://localhost:3000/auth/facebook/home/ideas"
   },
   function(accessToken, refreshToken, profile, cb) {
+      console.log(profile);
     User.findOrCreate({ facebookId: profile.id }, function (err, user) {
       return cb(err, user);
     });
@@ -152,6 +153,16 @@ passport.authenticate('github', { failureRedirect: '/login' }),
 function(req, res) {
 // Successful authentication, redirect home.
 res.redirect('/home/ideas');
+//Facebook Auth
+app.get('/auth/facebook',
+  passport.authenticate('facebook', {scope : ['email:email']}));
+
+app.get('/auth/facebook/home/ideas',
+  passport.authenticate('facebook', { failureRedirect: '/login'}),
+  function(req, res) {
+    // Successful authentication, redirect home.
+    res.redirect('/home/ideas');
+  });
 });
 //-------
 //Ideas

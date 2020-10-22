@@ -9,7 +9,8 @@ var userSchema = mongoose.Schema({
     username : String,
     password : String,
     googleId : String,
-    githubId : String
+    githubId : String,
+    facebookId : String
 });
 
 userSchema.plugin(passportLocalMongoose);
