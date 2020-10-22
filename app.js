@@ -153,6 +153,7 @@ passport.authenticate('github', { failureRedirect: '/login' }),
 function(req, res) {
 // Successful authentication, redirect home.
 res.redirect('/home/ideas');
+});
 //Facebook Auth
 // app.get('/auth/facebook',
 //   passport.authenticate('facebook', {scope : ['email:email']}));
