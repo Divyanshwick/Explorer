@@ -64,7 +64,7 @@ passport.use(new GoogleStrategy({
   },
   function(accessToken, refreshToken, profile, cb) {
      console.log(profile);
-    User.findOrCreate({name : profile.displayName},{image : profile.photos[0].value},{ googleId: profile.id }, function (err, user) {
+    User.findOrCreate({ googleId: profile.id },{name : profile.displayName},{image : profile.photos[0].value}, function (err, user) {
       return cb(err, user);
     });
   }
@@ -77,7 +77,7 @@ passport.use(new GitHubStrategy({
   },
   function(accessToken, refreshToken, profile, done) {
       console.log(profile);
-    User.findOrCreate({ githubId: profile.id }, function (err, user) {
+    User.findOrCreate({ githubId: profile.id },{name : profile.displayName},{image : profile.photos[0].value}, function (err, user) {
       return done(err, user);
     });
   }
