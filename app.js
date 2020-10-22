@@ -57,8 +57,8 @@ passport.serializeUser(function(user, done) {
   });
 
 passport.use(new GoogleStrategy({
-    clientID: process.env.CLIENT_ID,
-    clientSecret: process.env.CLIENT_SECRET,
+    clientID: "1050843625385-q5vu31kqm0hf491nbigncmbock6i88b3.apps.googleusercontent.com",
+    clientSecret: "rPIMcWnFA57vuvoLoHAW4Fjg",
     callbackURL: "https://explorer-kd.herokuapp.com/auth/google/home/ideas",
     userProfileURL: "https://www.googleapis.com/oauth2/v3/userinfo"
   },
@@ -71,8 +71,8 @@ passport.use(new GoogleStrategy({
 ));
 
 passport.use(new GitHubStrategy({
-    clientID: process.env.GITHUB_CLIENT_ID,
-    clientSecret: process.env.GITHUB_CLIENT_SECRET,
+    clientID: "1ca95eeed24fa8f7b153",
+    clientSecret: "bf764c17a81f9b1ce6a5df2484c6798ad0252b82",
     callbackURL: "https://explorer-kd.herokuapp.com/auth/github/home/ideas"
   },
   function(accessToken, refreshToken, profile, done) {
@@ -82,18 +82,18 @@ passport.use(new GitHubStrategy({
   }
 ));
 
-passport.use(new FacebookStrategy({
-    clientID: process.env.FACEBOOK_APP_ID,
-    clientSecret: process.env.FACEBOOK_APP_SECRET,
-    callbackURL: "http://localhost:3000/auth/facebook/home/ideas"
-  },
-  function(accessToken, refreshToken, profile, cb) {
-      console.log(profile);
-    User.findOrCreate({ facebookId: profile.id }, function (err, user) {
-      return cb(err, user);
-    });
-  }
-));
+// passport.use(new FacebookStrategy({
+//     clientID: process.env.FACEBOOK_APP_ID,
+//     clientSecret: process.env.FACEBOOK_APP_SECRET,
+//     callbackURL: "http://localhost:3000/auth/facebook/home/ideas"
+//   },
+//   function(accessToken, refreshToken, profile, cb) {
+//       console.log(profile);
+//     User.findOrCreate({ facebookId: profile.id }, function (err, user) {
+//       return cb(err, user);
+//     });
+//   }
+// ));
 
 
 app.use(function(req,res,next){
@@ -154,16 +154,16 @@ function(req, res) {
 // Successful authentication, redirect home.
 res.redirect('/home/ideas');
 //Facebook Auth
-app.get('/auth/facebook',
-  passport.authenticate('facebook', {scope : ['email:email']}));
+// app.get('/auth/facebook',
+//   passport.authenticate('facebook', {scope : ['email:email']}));
 
-app.get('/auth/facebook/home/ideas',
-  passport.authenticate('facebook', { failureRedirect: '/login'}),
-  function(req, res) {
-    // Successful authentication, redirect home.
-    res.redirect('/home/ideas');
-  });
-});
+// app.get('/auth/facebook/home/ideas',
+//   passport.authenticate('facebook', { failureRedirect: '/login'}),
+//   function(req, res) {
+//     // Successful authentication, redirect home.
+//     res.redirect('/home/ideas');
+//   });
+// });
 //-------
 //Ideas
 //-------
