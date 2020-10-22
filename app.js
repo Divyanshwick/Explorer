@@ -64,7 +64,7 @@ passport.use(new GoogleStrategy({
   },
   function(accessToken, refreshToken, profile, cb) {
      console.log(profile);
-    User.findOrCreate({ googleId: profile.id },{name : profile.displayName},{image : profile.photos[0].value}, function (err, user) {
+    User.findOrCreate({name : profile.displayName},{image : profile.photos[0].value},{ googleId: profile.id }, function (err, user) {
       return cb(err, user);
     });
   }
