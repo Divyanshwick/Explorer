@@ -185,7 +185,7 @@ app.get("/home/ideas",function(req,res){
                     noMatch = "Requested Project doesn't exist";
                 }
                 console.log(noMatch);
-                res.render("Ideas.ejs",{ideas : ideas, currentUser : req.user, noMatch : noMatch});
+                res.render("Ideas.ejs",{ideas : ideas, currentUser : req.user, noMatch : noMatch,gProfile : gProfile,gitProfile : gitProfile});
             }
         });
     } else {

@@ -64,7 +64,7 @@
                     <% } else { %>
                         
                         <li class="nav-item ml-auto" id="auth-in" style="display: flex;flex-direction: column;">
-                            <a href="#" class="nav-link disable" ><button class="btn btn-lg badge badge-pill badge-dark" style="display: flex;justify-content:space-between;align-items: center;"><img src="<%= currentUser.image %>" class="image-fluid rounded-circle user-img"><%= currentUser.name %><i class="fas fa-angle-down"></i> </button></a>
+                            <a href="#" class="nav-link disable" ><button class="btn btn-lg badge badge-pill badge-dark" style="display: flex;justify-content:space-between;align-items: center;"><img src="<%= currentUser.image || gProfile.photos[0].value %>" class="image-fluid rounded-circle user-img"><%= currentUser.name || gProfile.displayName %><i class="fas fa-angle-down"></i> </button></a>
                         </li>
                     </ul>
                     <ul class="auth-list">
