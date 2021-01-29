@@ -110,7 +110,11 @@ nav {
   font-weight: normal;
   color: var(--text);
 }
-
+.btnTxt {
+  font-size: 1.5 rem;
+  font-weight: normal;
+  color: var(--text);
+}
 .navbar-toggler i {
   color: var(--text);
 }
