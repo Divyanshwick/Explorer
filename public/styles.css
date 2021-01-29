@@ -1003,6 +1003,7 @@ input[type="submit"] {
 .auth-list {
   display: flex;
   list-style-type : none;
+  align-items: center !important;
 }
 .auth-list h1 {
   color : var(--text-variant);
