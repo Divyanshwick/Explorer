@@ -169,7 +169,7 @@
                                         <% if(currentUser && comment.author.email === (currentUser.username)) {%>
                                             <a class="btn btn-sm btn-outline-warning" href="/home/ideas/<%= idea._id %>/comments/<%= comment._id %>/edit">EDIT</a>
                                             <form action="/home/ideas/<%= idea._id %>/comments/<%= comment._id %>?_method=DELETE" method="POST">
-                                                <input style="height : 35px;width : 120px;font-size: 1em; background: transparent;color : #323232;border : 1px solid #323232;letter-spacing: 1px;font-family: none;border-top-right-radius: none;border-bottom-right-radius: none;"  type="submit" class="btn btn-sm btn-outline-danger" value="DELETE">
+                                                <input style="height : 35px;width : 120px;font-size: 1em; background: transparent;color : #323232;border : 1px solid #323232;letter-spacing: 1px;font-family: none;border-top-right-radius: 0px;border-bottom-right-radius: 0px;"  type="submit" class="btn btn-sm btn-outline-danger" value="DELETE">
                                             </form>
                                             <% } %>
                                         </div>
