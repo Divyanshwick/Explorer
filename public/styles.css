@@ -1164,7 +1164,7 @@ input[type="submit"] {
     align-items: center;
   }
   .fBox {
-    flex : 0.9;
+    flex-grow : 1;
   }
   .fBox form{
     width : 100%;
@@ -1213,7 +1213,7 @@ input[type="submit"] {
   }
   .fBox {
     width : 90%;
-    flex : 0.5;
+    flex-grow: 0.5;
   }
   .fBox form {
     padding : 0 0 0 0;
