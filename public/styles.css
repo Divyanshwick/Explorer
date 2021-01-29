@@ -96,6 +96,11 @@ nav {
   transition: color .2s ease-out, border-bottom-color .2s ease-out;
 }
 
+#loginBtn {
+  border-bottom: none !important;
+ 
+}
+
 .nav-item:hover {
   border-bottom: 2px solid var(--highlight);
 }
@@ -890,6 +895,10 @@ input[type="submit"] {
   height: 90vh;
   
 }
+.idea-submit-btn {
+  width : 151px;
+  height : 44px;
+}
 
 .idea-submit-btn, .idea-submit-btn:visited {
     background-color: transparent;
@@ -1024,7 +1033,7 @@ input[type="submit"] {
   width : 300px;
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
+  justify-content: space-evenly;
   align-items : center;
 }
 
