@@ -2,8 +2,6 @@ require('dotenv').config();
 var PORT = process.env.PORT || 3000;
 var methodOverride = require("method-override");
 var express = require("express");
-// var multer = require("multer");
-// var upload = multer({ dest : 'uploads/'});
 var app = express();
 var bodyParser  =   require("body-parser");
 var flash = require("connect-flash");
